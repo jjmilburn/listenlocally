@@ -15,12 +15,22 @@ def index(request):
     r = json.load(urllib.urlopen(
         "https://www.kimonolabs.com/api/25fjm8zy?apikey={}".format(kim_key)))
 
+    spot_id = ''
     artist_names = []
     for local_show in r['results']['collection1']:
         artist_name = local_show['artist']['text']
         if ('&' not in artist_name and
                 'and' not in artist_name and
                 ',' not in artist_name):
+            try:
+                spot_artists = json.load(urllib.urlopen(
+                    "https://api.spotify.com/v1/search?q={}&type=artist".format(
+                        artist_name.replace(" ", "%20"))))
+
+                spot_id = spot_artists['artists']['items'][0]['id']  # 1st hit
+            except:
+                print "nope"
+            print spot_id + '<br>'
             print local_show['artist']['text']
             artist_names.append(artist_name)
     return HttpResponse('<pre>' + ', '.join(artist_names) + '</pre>')
