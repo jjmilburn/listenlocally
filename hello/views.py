@@ -3,17 +3,27 @@ from django.http import HttpResponse
 
 from .models import Greeting
 
-import requests
+import urllib
+import json
 import os
 
 
 # Create your views here.
 def index(request):
-    kimono_key = int(os.environ.get('KIMONO_KEY'))
-#    r = requests.get(
-#        'http://www.kimonolabs.com/api/25fjm8zy?apikey={}'.format(kimono_key))
-#    print r.text
-#    return HttpResponse(('<pre>' + r.text + '</pre>'))
+    kim_api = '25fjm8zy'
+    kim_key = os.environ.get('KIMONO_KEY')
+    r = json.load(urllib.urlopen(
+        "https://www.kimonolabs.com/api/25fjm8zy?apikey={}".format(kim_key)))
+
+    artist_names = []
+    for local_show in r['results']['collection1']:
+        artist_name = local_show['artist']['text']
+        if ('&' not in artist_name and
+                'and' not in artist_name and
+                ',' not in artist_name):
+            print local_show['artist']['text']
+            artist_names.append(artist_name)
+    return HttpResponse('<pre>' + ', '.join(artist_names) + '</pre>')
 
 
 def db(request):
