@@ -34,7 +34,8 @@ def index(request):
                 logger.error("Problem with Spotify API Access")
             try:
                 spot_id = spot_artists['artists']['items'][0]['id']  # 1st hit
-                artist_spot_ids.append(spot_id)
+                if not spot_id in artist_spot_ids:
+                    artist_spot_ids.append(spot_id)
             except IndexError:  # no artist found for this search.
                 logger.warning(
                     "No Artist {} found in Spotify".format(artist_name))
@@ -52,16 +53,26 @@ def index(request):
         try:
             artist_top_tracks.append(
                 top_tracks['tracks']
-                [0]
-                ['external_urls']
-                ['spotify'])
+                [0])
         except IndexError:  # no top tracks available?
             logger.warning(
                 "No top tracks for spot_id".format(spot_id))
              #the actual track URL is
 #            artist_top_tracks[x]['external_urls']['spotify'], launches
 #https player for spotify song
-    return HttpResponse('<pre>' + ', '.join(artist_top_tracks) + '</pre>')
+    final_html_response = '<head><title>ListenLocally</title>' + \
+            '<header><h1>Music By Artists Playing in SF Bay</h1></header>'
+    for top_track in artist_top_tracks:
+        final_html_response = final_html_response + \
+            '<audio controls>' + '<source src=\"' + \
+            top_track['preview_url'] + '\">' + \
+            ' type=\"audio/mpeg\"></audio>' + \
+            top_track['name'] + '</a>' + ' by ' + \
+            top_track['artists'][0]['name'] + ' ' \
+            '<a href=\"' + top_track['external_urls']['spotify'] + '\">' + \
+            'Full Track Link' + '</a><br>'
+
+    return HttpResponse('<pre>'+final_html_response+'</pre>')
 
 
 def db(request):
