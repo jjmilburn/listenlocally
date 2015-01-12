@@ -67,7 +67,7 @@ def index(request):
             '<audio controls>' + '<source src=\"' + \
             top_track['preview_url'] + '\">' + \
             ' type=\"audio/mpeg\"></audio>' + \
-            top_track['name'] + '</a>' + ' by ' + \
+            ' ' + top_track['name'] + '</a>' + ' by ' + \
             top_track['artists'][0]['name'] + ' ' \
             '<a href=\"' + top_track['external_urls']['spotify'] + '\">' + \
             'Full Track Link' + '</a><br>'
