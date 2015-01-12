@@ -20,7 +20,7 @@ def index(request):
     artist_spot_ids = []
     for local_show in r['results']['collection1']:
         artist_name = local_show['artist']['text']
-
+        artist_name.encode('ascii',errors='ignore')
         # in the future, we can break on these delimiters, and
         # treat each artist separately
         if ('&' not in artist_name and
@@ -29,7 +29,7 @@ def index(request):
             try:
                 spot_artists = json.load(urllib.urlopen(
                     "https://api.spotify.com/v1/search?q={}&type=artist".format(
-                        artist_name.replace(" ", "%20"))))
+                        artist_name.replace(' ', '%20'))))
             except IOError:
                 logger.error("Problem with Spotify API Access")
             try:
