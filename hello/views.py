@@ -64,7 +64,7 @@ def index(request):
             '<header><h1>Music By Artists Playing in SF Bay</h1></header>'
     for top_track in artist_top_tracks:
         final_html_response = final_html_response + \
-            '<audio controls>' + '<source src=\"' + \
+            '<audio controls preload="none">' + '<source src=\"' + \
             top_track['preview_url'] + '\">' + \
             ' type=\"audio/mpeg\"></audio>' + \
             ' ' + top_track['name'] + '</a>' + ' by ' + \
