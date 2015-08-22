@@ -1,8 +1,11 @@
-# python-getting-started
+# listenlocally app
 
-A barebones Python app, which can easily be deployed to Heroku.
+This app exists to:
+* Provide geographically contextualized music recommendations (various sources)
+* Quickly provide 30-sec samples of music by artists playing locally
+* 
 
-This application support the [Getting Started with Python on Heroku](https://devcenter.heroku.com/articles/getting-started-with-python) article - check it out.
+This is a basic Python/Django app, based on the [Heroku Tutorial][Getting Started with Python on Heroku](https://devcenter.heroku.com/articles/getting-started-with-python).
 
 ## Running Locally
 
@@ -11,6 +14,7 @@ Make sure you have Python [installed properly](http://install.python-guide.org).
 ```sh
 $ git clone git@github.com:heroku/python-getting-started.git
 $ cd python-getting-started
+$ sudo apt-get install libpq-dev (required on Ubuntu 14.04)
 $ pip install -r requirements.txt
 $ python manage.py syncdb
 $ foreman start web
@@ -29,7 +33,4 @@ $ heroku open
 
 ## Documentation
 
-For more information about using Python on Heroku, see these Dev Center articles:
-
-- [Python on Heroku](https://devcenter.heroku.com/categories/python)
-
+TODO

@@ -13,6 +13,7 @@ def index(request):
     logger = logging.getLogger(__name__)
     kim_api = '25fjm8zy'  #in future, can change this
     kim_key = os.environ.get('KIMONO_KEY')
+    logger.info(kim_key)
     r = json.load(urllib.urlopen(
         "https://www.kimonolabs.com/api/25fjm8zy?apikey={}".format(kim_key)))
 

@@ -7,7 +7,7 @@ import main.views
 
 urlpatterns = patterns('',
     # Examples:
-    # url(r'^$', 'gettingstarted.views.home', name='home'),
+    # url(r'^$', 'listenlocally.views.home', name='home'),
     # url(r'^blog/', include('blog.urls')),
 
     url(r'^$', main.views.index, name='index'),
