@@ -13,5 +13,6 @@ urlpatterns = patterns('',
     url(r'^$', main.views.index, name='index'),
     url(r'^db', main.views.db, name='db'),
     url(r'^admin/', include(admin.site.urls)),
+    url(r'^cities/$', main.views.cities, name='index'),
 
 )

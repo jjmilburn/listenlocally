@@ -65,6 +65,14 @@ def index(request):
 #https player for spotify song
     final_html_response = '<head><title>ListenLocally</title>' + \
             '<header><h1>Music By Artists Playing in SF Bay</h1></header>'
+
+    ### this section is to be replaced with an actual HTML5 player.
+    #  Open question: what is the Right Way to model this in Django?
+    #  1. Get the data from Spotify (do it every time now)
+    #  2. Store the data somehow (in a model in sqlite3; with a date?)
+    #  3. Pull from the database and fill the html5 playlist
+    #  Ideally, users can 'like' a track, and we can track this somehow.
+    #  (separate question - session tracking)
     for top_track in artist_top_tracks:
         final_html_response = final_html_response + \
             '<audio controls preload="none">' + '<source src=\"' + \
