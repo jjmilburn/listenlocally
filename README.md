@@ -28,8 +28,9 @@ Good luck :).
 
 ### Licensing
 
-Really, this code is probably not very useful to you.  But in the spirit of
-semi-formality, consider this MIT licensed.  Do whatever you'd like with it.
+Really, this code is probably not very useful to you.  But to appease those
+who consider such things of extreme value or philosophical worth, consider
+this MIT licensed.  Do whatever you'd like with it.
 
 Text below:
 
