@@ -23,6 +23,9 @@ tribute group, or other non-actionable, not super valuable information.
 The unmodified code still attempts to run at http://listenlocally.herokuapp.com, where it will gladly spew forth errors due to the failure to connect to the
 Kimono Labs servers any longer.
 
+There may be reference to defunct "SECRET_KEY" values/etc in this repository.
+Good luck :).
+
 ### Licensing
 
 Really, this code is probably not very useful to you.  But in the spirit of
